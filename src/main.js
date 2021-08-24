@@ -5,24 +5,13 @@ import singleSpaVue from 'single-spa-vue';
 import store from "./store";
 import router from './router'
 import App from './App.vue';
-import { globalFilters, i18n, globalLocaleMessages, raven } from '@bizfly/shared'
+import { globalFilters, raven } from '@bizfly/shared'
 import * as filters from './utils/filters'
-import localeMessages from './utils/i18n'
+import i18n from './utils/i18n'
 import RavenVue from 'vue-raven'
 import { BfButton, locale, languages } from 'bizfly-ui'
 
 raven.addPlugin(RavenVue, Vue)
-
-Object.keys(globalLocaleMessages()).forEach((locale) => {
-  const messages = {
-    ...localeMessages()[locale],
-    ...globalLocaleMessages()[locale]
-  }
-  i18n.setLocaleMessage(
-    locale, 
-    messages
-  );
-});
 
 Vue.component("BfButton", BfButton);
 
@@ -30,7 +19,7 @@ locale(languages.vi)
 
 Vue.config.productionTip = false;
 
-const mergeFilters = {...globalFilters, ...filters}
+const mergeFilters = { ...globalFilters, ...filters }
 Object.keys(mergeFilters).forEach(key => {
   Vue.filter(key, mergeFilters[key])
 })
