@@ -1,4 +1,4 @@
-import { i18n, globalLocaleMessages } from '@bizfly/shared'
+import { i18n } from '@bizfly/shared'
 
 function localeMessages() {
   const locales = require.context('../lang', true, /[A-Za-z0-9-_,\s]+\.json$/i)
@@ -13,10 +13,10 @@ function localeMessages() {
   return messages
 }
 
-Object.keys(globalLocaleMessages()).forEach((locale) => {
+Object.keys(localeMessages()).forEach((locale) => {
   const messages = {
-    ...localeMessages()[locale],
-    ...globalLocaleMessages()[locale]
+    ...i18n.messages[locale],
+    ...localeMessages()[locale]
   }
   i18n.setLocaleMessage(
     locale,
