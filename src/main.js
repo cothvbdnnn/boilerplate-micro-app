@@ -11,7 +11,9 @@ import i18n from './utils/i18n'
 import RavenVue from 'vue-raven'
 import { BfButton, locale, languages } from 'bizfly-ui'
 
-raven.addPlugin(RavenVue, Vue)
+if (process.env.NODE_ENV === 'production'){
+  raven.addPlugin(RavenVue, Vue)  
+}
 
 Vue.component("BfButton", BfButton);
 

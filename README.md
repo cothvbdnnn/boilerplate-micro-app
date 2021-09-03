@@ -1,4 +1,4 @@
-# Dashboard
+# single-app
 ## Structure
 ```
 ├── public 
@@ -44,8 +44,6 @@
 │   └── unit               
 |       ├── components
 |       |   └── app.spec.js
-|       ├── global-store
-|       |   └── module.js
 |       ├── layout
 |       |   └── example.spec.js
 |       ├── views

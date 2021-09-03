@@ -27,7 +27,7 @@ export const createStore = (objectModules = {}) => {
 }
 
 export const createRouter = (arrayRoutes = []) => {
-  return new VueRouter({ 
+  return new VueRouter({
     routes: [
       ...routes,
       ...arrayRoutes
@@ -35,12 +35,21 @@ export const createRouter = (arrayRoutes = []) => {
   })
 }
 
+export const createMock = ((mock = {}) => {
+  return {
+    $t: () => '',
+    $notify: () => { },
+    ...mock
+  }
+})
+
 export const createDeep = (component, options = {}) => {
   return mount(component, {
     stubs: bizflyStubs,
     store: createStore(),
     router: createRouter(),
     localVue,
+    mocks: createMock(),
     ...options
   })
 }
@@ -51,6 +60,7 @@ export const createShallow = (component, options = {}) => {
     store: createStore(),
     router: createRouter(),
     localVue,
+    mocks: createMock(),
     ...options
   })
 }

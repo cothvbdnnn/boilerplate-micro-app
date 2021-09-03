@@ -1,5 +1,8 @@
 const bizflyStubs = [
   'bf-button',
+  'bf-row',
+  'bf-col',
+  'bf-link',
   'bf-avatar',
   'bf-table',
   'bf-table-column',
